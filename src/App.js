@@ -10,7 +10,6 @@ class App extends Component {
       quotes: [],
       randomQuoteIndex: null
     }
-    this.randomQuoteIndex = this.randomQuoteIndex.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +23,10 @@ class App extends Component {
       }));
   }
 
+  get randomQuote() {
+    return this.state.quotes[this.state.randomQuoteIndex];
+  }
+
   randomQuoteIndex() {
     return random(0, this.state.quotes.length - 1);
   }
@@ -31,9 +34,12 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="quote-box">
+        {/* Since this is a get function, can call it as though it were a regular variable */}
+        {/* The check for randomQuote is needed here; can't just do this.randomQuote.quote by itself, because  */}
+        {this.randomQuote ? this.randomQuote.quote : ''}
         <Button
           buttonDisplayName="Next"
-          clickHandler={this.randomQuoteIndex}
+          clickHandler={this.blah}
         />
       </div>
     );
