@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="quote-box">
-        {this.state.isDoneFetching ? this.randomQuote().quote : 'Loading...'}
+        {this.state.isDoneFetching ? `"${this.randomQuote().quote}" –${this.randomQuote().author}` : 'Loading...'}
         <Button
           buttonDisplayName="Next"
           clickHandler={this.blah}
