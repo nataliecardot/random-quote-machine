@@ -11,6 +11,7 @@ class App extends Component {
       randomQuoteIndex: null,
       isDoneFetching: false
     }
+    this.newRandomQuoteIndex = this.newRandomQuoteIndex.bind(this);
   }
 
   componentDidMount() {
@@ -35,13 +36,20 @@ class App extends Component {
     return random(0, quotes.length - 1);
   }
 
+  newRandomQuoteIndex() {
+    this.setState({
+      // This causes randomQuoteIndex state to change (since it uses randomQuoteIndex), triggering rerender
+      randomQuoteIndex: this.randomQuoteIndex(this.state.quotes)
+    });
+  }
+
   render() {
     return (
       <div className="App" id="quote-box">
         {this.state.isDoneFetching ? `"${this.randomQuote().quote}" –${this.randomQuote().author}` : 'Loading...'}
         <Button
           buttonDisplayName="Next"
-          clickHandler={this.blah}
+          clickHandler={this.newRandomQuoteIndex}
         />
       </div>
     );
