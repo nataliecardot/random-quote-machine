@@ -11,7 +11,7 @@ class App extends Component {
       randomQuoteIndex: null,
       isDoneFetching: false
     }
-    this.newRandomQuoteIndex = this.newRandomQuoteIndex.bind(this);
+    this.newRandomQuote = this.newRandomQuote.bind(this);
   }
 
   componentDidMount() {
@@ -19,27 +19,28 @@ class App extends Component {
       // Takes a JSON response string and parses it into JS object
       .then(response => response.json())
       // state is set to quotes: quotes due to destructuring
-      // Using setState callback since setState is asynchronous and need to make sure quotes is loaded before setting the randomQuoteIndex state since it depends on it
       .then(quotes => this.setState({
           quotes,
-          randomQuoteIndex: this.randomQuoteIndex(quotes),
+          randomQuoteIndex: this.generateRandomQuoteIndex(quotes),
           isDoneFetching: true
         }));
   }
 
+  // Returns object with quote and author properties from quote state (fetched array of objects) at random index returned by generateRandomQuoteIndex method
   randomQuote() {
     return this.state.quotes[this.state.randomQuoteIndex];
   }
 
-  // Having quotes as argument rather than referencing this.states.quote is needed for setState in componentDidMount. Otherwise, randomQuoteIndex is called before quotes state is set, meaning state would have to be set in setState callback after first setState for quotes set. See https://bit.ly/30ki9w0
-  randomQuoteIndex(quotes) {
+  // Returns integer representing index in quotes state. Having quotes as argument rather than referencing this.states.quote is needed for setState in componentDidMount. Otherwise, randomQuoteIndex is called before quotes state is set, meaning state would have to be set in setState callback after first setState for quotes set. See https://bit.ly/30ki9w0
+  generateRandomQuoteIndex(quotes) {
     return random(0, quotes.length - 1);
   }
 
-  newRandomQuoteIndex() {
+  // Sets state with results of calling generateRandomQuoteIndex again to generate new random index based on quotes state (array of objects). Used only when "next" button is clicked to display new quote. Triggers new render since random index state changes; quote displayed by randomQuote() call in render() changes 
+  newRandomQuote() {
     this.setState({
       // This causes randomQuoteIndex state to change (since it uses randomQuoteIndex), triggering rerender
-      randomQuoteIndex: this.randomQuoteIndex(this.state.quotes)
+      randomQuoteIndex: this.generateRandomQuoteIndex(this.state.quotes)
     });
   }
 
@@ -49,7 +50,7 @@ class App extends Component {
         {this.state.isDoneFetching ? `"${this.randomQuote().quote}" –${this.randomQuote().author}` : 'Loading...'}
         <Button
           buttonDisplayName="Next"
-          clickHandler={this.newRandomQuoteIndex}
+          clickHandler={this.newRandomQuote}
         />
       </div>
     );
