@@ -8,35 +8,37 @@ class App extends Component {
     super(props);
     this.state = {
       quotes: [],
-      randomQuoteIndex: null
+      randomQuoteIndex: null,
+      isDoneFetching: false
     }
   }
 
   componentDidMount() {
-    // fetch method uses GET method by default; don't need to specify
     fetch('https://gist.githubusercontent.com/nataliecardot/0ca0878d2f0c4210e2ed87a5f6947ec7/raw/1802a693d02ea086817e46a42413c0df4c077e3b/quotes.json')
       // Takes a JSON response string and parses it into JS object
       .then(response => response.json())
       // state is set to quotes: quotes due to destructuring
-      .then(quotes => this.setState({ quotes }, () => {
-        this.setState({ randomQuoteIndex: this.randomQuoteIndex() })
-      }));
+      // Using setState callback since setState is asynchronous and need to make sure quotes is loaded before setting the randomQuoteIndex state since it depends on it
+      .then(quotes => this.setState({
+          quotes,
+          randomQuoteIndex: this.randomQuoteIndex(quotes),
+          isDoneFetching: true
+        }));
   }
 
-  get randomQuote() {
+  randomQuote() {
     return this.state.quotes[this.state.randomQuoteIndex];
   }
 
-  randomQuoteIndex() {
-    return random(0, this.state.quotes.length - 1);
+  // Having quotes as argument rather than referencing this.states.quote is needed for setState in componentDidMount. Otherwise, randomQuoteIndex is called before quotes state is set, meaning state would have to be set in setState callback after first setState for quotes set. See https://bit.ly/30ki9w0
+  randomQuoteIndex(quotes) {
+    return random(0, quotes.length - 1);
   }
 
   render() {
     return (
       <div className="App" id="quote-box">
-        {/* Since this is a get function, can call it as though it were a regular variable */}
-        {/* The check for randomQuote is needed here; can't just do this.randomQuote.quote by itself, because  */}
-        {this.randomQuote ? this.randomQuote.quote : ''}
+        {this.state.isDoneFetching ? this.randomQuote().quote : 'Loading...'}
         <Button
           buttonDisplayName="Next"
           clickHandler={this.blah}
