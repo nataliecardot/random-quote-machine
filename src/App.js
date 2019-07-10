@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import QuoteMachine from './components/QuoteMachine';
 import { random } from 'lodash';
 import 'typeface-roboto';
-import QuoteMachine from './components/QuoteMachine';
+import { Grid } from '@material-ui/core';
+
 
 class App extends Component {
   constructor(props) {
@@ -47,13 +49,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" id="quote-box">
-        <QuoteMachine
-          isDoneFetching={this.state.isDoneFetching}
-          randomQuote={this.randomQuote}
-          nextRandomQuote={this.nextRandomQuote}
-        />
-      </div>
+      <Grid id="quote-box" justify="center" container>
+        <Grid item>
+          <QuoteMachine
+            isDoneFetching={this.state.isDoneFetching}
+            randomQuote={this.randomQuote}
+            nextRandomQuote={this.nextRandomQuote}
+          />
+        </Grid>
+      </Grid>
     );
   }
 }
