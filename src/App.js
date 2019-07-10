@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { random } from 'lodash';
-import Button from './components/Button';
 import QuoteMachine from './components/QuoteMachine';
 
 class App extends Component {
