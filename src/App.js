@@ -3,7 +3,16 @@ import QuoteMachine from './components/QuoteMachine';
 import { random } from 'lodash';
 import 'typeface-roboto';
 import { Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  // container is root component (set in Grid component instance)
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    height: '100vh'
+  }
+};
 
 class App extends Component {
   constructor(props) {
@@ -49,8 +58,13 @@ class App extends Component {
 
   render() {
     return (
-      <Grid id="quote-box" justify="center" container>
-        <Grid item>
+      <Grid
+        id="quote-box"
+        className={this.props.classes.container}
+        justify="center"
+        container
+      >
+        <Grid xs={11} lg={8} item>
           <QuoteMachine
             isDoneFetching={this.state.isDoneFetching}
             randomQuote={this.randomQuote}
@@ -62,4 +76,5 @@ class App extends Component {
   }
 }
 
-export default App;
+// Passing styles into withStyles function returns a higher order componentin which App component can be passed so that classes prop imports styles
+export default withStyles(styles)(App);
