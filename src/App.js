@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { random } from 'lodash';
 import Button from './components/Button';
+import QuoteMachine from './components/QuoteMachine';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
       randomQuoteIndex: null,
       isDoneFetching: false
     }
-    this.newRandomQuote = this.newRandomQuote.bind(this);
+    this.randomQuote = this.randomQuote.bind(this);
+    this.nextRandomQuote = this.nextRandomQuote.bind(this);
   }
 
   componentDidMount() {
@@ -36,8 +38,8 @@ class App extends Component {
     return random(0, quotes.length - 1);
   }
 
-  // Sets state with results of calling generateRandomQuoteIndex again to generate new random index based on quotes state (array of objects). Used only when "next" button is clicked to display new quote. Triggers new render since random index state changes; quote displayed by randomQuote() call in render() changes 
-  newRandomQuote() {
+  // Sets state with results of calling generateRandomQuoteIndex again to generate new random index based on quotes state (array of objects). Used only when "next" button is clicked to display new quote. Triggers new render since random index state changes; quote displayed by randomQuote() call in render() changes
+  nextRandomQuote() {
     this.setState({
       // This causes randomQuoteIndex state to change (since it uses randomQuoteIndex), triggering rerender
       randomQuoteIndex: this.generateRandomQuoteIndex(this.state.quotes)
@@ -47,10 +49,10 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="quote-box">
-        {this.state.isDoneFetching ? `"${this.randomQuote().quote}" –${this.randomQuote().author}` : 'Loading...'}
-        <Button
-          buttonDisplayName="Next"
-          clickHandler={this.newRandomQuote}
+        <QuoteMachine
+          isDoneFetching={this.state.isDoneFetching}
+          randomQuote={this.randomQuote}
+          nextRandomQuote={this.nextRandomQuote}
         />
       </div>
     );
