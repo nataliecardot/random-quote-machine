@@ -5,16 +5,26 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import './QuoteMachine.css';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  card: {
+    padding: '1rem',
+  },
+};
 
 // Parentheses around function body is implicit return
 const QuoteMachine = (props) => (
-  <Card>
+  // It's not this.props.classes because this is a functional component and therefore it doesn't have a this instance
+  <Card className={props.classes.card}>
     <CardContent>
       {props.isDoneFetching ?
         (
           <Typography>
-            <p className="quote">{props.randomQuote().quote}</p>
-            <p className="author">–{props.randomQuote().author}</p>
+            <div className="quote-parent">
+              <p className="quote">{props.randomQuote().quote}</p>
+              <p className="author">–{props.randomQuote().author}</p>
+            </div>
           </Typography>
         ) : 'Loading...'}
     </CardContent>
@@ -30,4 +40,4 @@ const QuoteMachine = (props) => (
   </Card>
 )
 
-export default QuoteMachine;
+export default withStyles(styles)(QuoteMachine);

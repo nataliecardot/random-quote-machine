@@ -1,8 +1,37 @@
-.quote {
-  font-size: 2rem;
+.quote-parent {
   width: 90%;
+  margin-left: 20px;
+}
+
+.quote {
+  font-size: 1.7rem;
+  text-align: left;
 }
 
 .author {
-  font-size: 1.25rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-align: right;
+  padding-top: 10px;
+  margin-right: 120px;
+}
+
+/* Smartphones */
+@media screen and (max-width: 767px) {
+  .quote-parent {
+    margin-left: 15px;
+  }
+  .quote {
+    font-size: 1.5rem;
+  }
+  .author {
+    margin-right: 10px;
+  }
+}
+
+/* Tablets/medium devices */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .author {
+    margin-right: 40px;
+  }
 }
