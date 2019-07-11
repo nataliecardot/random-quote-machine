@@ -6,6 +6,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import './QuoteMachine.css';
 import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const styles = {
   card: {
@@ -36,6 +39,12 @@ const QuoteMachine = (props) => (
       >
         Next
       </Button>
+
+      <IconButton>
+        <FontAwesomeIcon icon={faTwitter} size="md">
+
+        </FontAwesomeIcon>
+      </IconButton>
     </CardActions>
   </Card>
 )
