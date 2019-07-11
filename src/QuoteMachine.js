@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import './QuoteMachine.css';
 
 // Parentheses around function body is implicit return
 const QuoteMachine = (props) => (
@@ -12,8 +13,8 @@ const QuoteMachine = (props) => (
       {props.isDoneFetching ?
         (
           <Typography>
-            <p>{props.randomQuote().quote}</p>
-            <p>–{props.randomQuote().author}</p>
+            <p className="quote">{props.randomQuote().quote}</p>
+            <p className="author">–{props.randomQuote().author}</p>
           </Typography>
         ) : 'Loading...'}
     </CardContent>
