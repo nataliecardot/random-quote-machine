@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import QuoteMachine from './components/QuoteMachine';
 import { random } from 'lodash';
-import 'typeface-roboto';
+import 'typeface-roboto'; // From Material-UI
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import backgroundImage from './dawn.jpg';
 
 const styles = {
   // container is root component (set in Grid component instance)
   container: {
     display: 'flex',
     alignItems: 'center',
-    height: '100vh'
+    height: '100vh',
+    background: `url(${backgroundImage}) center`,
+    backgroundSize: 'cover', // Using this in background causes issues
   }
 };
 
@@ -64,7 +67,7 @@ class App extends Component {
         justify="center"
         container
       >
-        <Grid xs={11} lg={8} item>
+        <Grid xs={11} lg={8} className={this.props.classes.child} item>
           <QuoteMachine
             isDoneFetching={this.state.isDoneFetching}
             randomQuote={this.randomQuote}
@@ -76,5 +79,5 @@ class App extends Component {
   }
 }
 
-// Passing styles into withStyles function returns a higher order componentin which App component can be passed so that classes prop imports styles
+// Passing styles into withStyles function returns a higher order component in which App component can be passed so that classes prop imports styles
 export default withStyles(styles)(App);
