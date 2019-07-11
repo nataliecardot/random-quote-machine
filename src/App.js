@@ -64,7 +64,7 @@ class App extends Component {
         justify="center"
         container
       >
-        <Grid item>
+        <Grid xs={11} lg={8} item>
           <QuoteMachine
             isDoneFetching={this.state.isDoneFetching}
             randomQuote={this.randomQuote}
