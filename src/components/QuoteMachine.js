@@ -12,7 +12,8 @@ const QuoteMachine = (props) => (
       {props.isDoneFetching ?
         (
           <Typography>
-            {props.randomQuote().quote} –{props.randomQuote().author}
+            <p>{props.randomQuote().quote}</p>
+            <p>–{props.randomQuote().author}</p>
           </Typography>
         ) : 'Loading...'}
     </CardContent>
