@@ -1,6 +1,6 @@
 .quote-parent {
   width: 90%;
-  margin-left: 20px;
+  margin-left: 35px;
 }
 
 .quote {
@@ -22,10 +22,11 @@
     margin-left: 15px;
   }
   .quote {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .author {
-    margin-right: 10px;
+    font-size: 1.2rem;
+    margin-right: 20px;
   }
 }
 
