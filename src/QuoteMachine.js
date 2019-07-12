@@ -21,15 +21,12 @@ const QuoteMachine = (props) => (
   // It's not this.props.classes because this is a functional component and therefore it doesn't have a this instance
   <Card className={props.classes.card}>
     <CardContent>
-      {props.isDoneFetching ?
-        (
-          <Typography>
-            <div className="quote-parent">
-              <p className="quote">{props.randomQuote.quote}</p>
-              <p className="author">–{props.randomQuote.author}</p>
-            </div>
-          </Typography>
-        ) : 'Loading...'}
+      <Typography>
+        <div className="quote-parent">
+          <p className="quote">{props.randomQuote.quote}</p>
+          <p className="author">–{props.randomQuote.author}</p>
+        </div>
+      </Typography>
     </CardContent>
 
     <CardActions>
@@ -40,9 +37,15 @@ const QuoteMachine = (props) => (
         Next
       </Button>
 
-      <IconButton>
+      {props.randomQuote ?
+      <IconButton
+        id="tweet-quote"
+        target="_blank"
+        href={`https://twitter.com/intent/tweet?text="${props.randomQuote.quote}"+–${props.randomQuote.author}`}
+      >
         <FontAwesomeIcon icon={faTwitter} size="md" />
       </IconButton>
+      : null}
     </CardActions>
   </Card>
 )
