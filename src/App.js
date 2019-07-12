@@ -24,7 +24,8 @@ class App extends Component {
     super();
     this.state = {
       quotes: [],
-      randomQuoteIndex: null
+      randomQuoteIndex: null,
+      isDoneFetching: false
     }
     this.nextRandomQuote = this.nextRandomQuote.bind(this);
   }
@@ -36,7 +37,8 @@ class App extends Component {
       // state is set to quotes: quotes due to destructuring
       .then(quotes => this.setState({
           quotes,
-          randomQuoteIndex: this.generateRandomQuoteIndex(quotes)
+          randomQuoteIndex: this.generateRandomQuoteIndex(quotes),
+          isDoneFetching: true
         }));
   }
 
@@ -67,13 +69,11 @@ class App extends Component {
         container
       >
         <Grid xs={10} sm={9} md={8} lg={7} xl={6} item>
-          {/* Ensures that the results of calling randomQuote(), an object from a fetched array (based on generated random index) is available before rendering component. Need to check */}
-          {this.randomQuote() ?
-            <QuoteMachine
-              randomQuote={this.randomQuote()}
-              nextRandomQuote={this.nextRandomQuote}
-            />
-          : null}
+          <QuoteMachine
+            isDoneFetching={this.state.isDoneFetching}
+            randomQuote={this.randomQuote()}
+            nextRandomQuote={this.nextRandomQuote}
+          />
         </Grid>
       </Grid>
     );

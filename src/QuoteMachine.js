@@ -21,12 +21,15 @@ const QuoteMachine = (props) => (
   // It's not this.props.classes because this is a functional component and therefore it doesn't have a this instance
   <Card className={props.classes.card}>
     <CardContent>
-      <Typography>
-        <div className="quote-parent">
-          <p className="quote">{props.randomQuote.quote}</p>
-          <p className="author">–{props.randomQuote.author}</p>
-        </div>
-      </Typography>
+      {props.isDoneFetching ?
+        (
+          <Typography>
+            <div className="quote-parent">
+              <p className="quote">{props.randomQuote.quote}</p>
+              <p className="author">–{props.randomQuote.author}</p>
+            </div>
+          </Typography>
+        ) : <p>'Loading'</p>}
     </CardContent>
 
     <CardActions>
@@ -37,7 +40,7 @@ const QuoteMachine = (props) => (
         Next
       </Button>
 
-      {props.randomQuote ?
+      {props.isDoneFetching ?
       <IconButton
         id="tweet-quote"
         target="_blank"
