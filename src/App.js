@@ -20,7 +20,8 @@ const styles = {
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    // Passing props to super only needed then you want to access this.props in constructor
+    super();
     this.state = {
       quotes: [],
       randomQuoteIndex: null,
@@ -71,7 +72,7 @@ class App extends Component {
         <Grid xs={10} sm={9} md={8} lg={7} xl={6} item>
           <QuoteMachine
             isDoneFetching={this.state.isDoneFetching}
-            randomQuote={this.randomQuote}
+            randomQuote={this.randomQuote()}
             nextRandomQuote={this.nextRandomQuote}
           />
         </Grid>

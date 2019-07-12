@@ -25,8 +25,8 @@ const QuoteMachine = (props) => (
         (
           <Typography>
             <div className="quote-parent">
-              <p className="quote">{props.randomQuote().quote}</p>
-              <p className="author">–{props.randomQuote().author}</p>
+              <p className="quote">{props.randomQuote.quote}</p>
+              <p className="author">–{props.randomQuote.author}</p>
             </div>
           </Typography>
         ) : 'Loading...'}
