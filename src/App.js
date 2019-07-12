@@ -37,7 +37,7 @@ class App extends Component {
       .then(quotes => this.setState({
           quotes,
           randomQuoteIndex: this.generateRandomQuoteIndex(quotes),
-          // isDoneFetching: true
+          isDoneFetching: true
         }));
   }
 
