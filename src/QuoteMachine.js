@@ -29,9 +29,9 @@ const QuoteMachine = (props) => (
       <CardContent >
         {props.isDoneFetching ?
           (
-              <div className="quote-parent">
+              <div className="quote-parent" id="text">
                 <p className="quote">{props.randomQuote.quote}</p>
-                <p className="author">–{props.randomQuote.author}</p>
+                <p className="author" id="author">–{props.randomQuote.author}</p>
               </div>
           ) : (
             <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -47,6 +47,7 @@ const QuoteMachine = (props) => (
 
     <CardActions>
       <Button
+        id="new-quote"
         size="large"
         onClick={props.nextRandomQuote}
       >
