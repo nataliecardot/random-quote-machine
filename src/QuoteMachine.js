@@ -41,9 +41,7 @@ const QuoteMachine = (props) => (
       </Button>
 
       <IconButton>
-        <FontAwesomeIcon icon={faTwitter} size="md">
-
-        </FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="md" />
       </IconButton>
     </CardActions>
   </Card>
