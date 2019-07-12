@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://gist.githubusercontent.com/nataliecardot/0ca0878d2f0c4210e2ed87a5f6947ec7/raw/1802a693d02ea086817e46a42413c0df4c077e3b/quotes.json')
+    fetch('https://gist.githubusercontent.com/nataliecardot/0ca0878d2f0c4210e2ed87a5f6947ec7/raw/529b629f8eb799868d93e631799c644964194d72/quotes.json')
       // Takes a JSON response string and parses it into JS object
       .then(response => response.json())
       // state is set to quotes: quotes due to destructuring
