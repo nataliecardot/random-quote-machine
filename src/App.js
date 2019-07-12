@@ -6,7 +6,6 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import backgroundImage from './dawn.jpg';
 
-
 const styles = {
   // container is root component (set in Grid component instance)
   container: {
