@@ -16,6 +16,12 @@
   margin-right: 120px;
 }
 
+.loading-message {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
 /* Smartphones */
 @media screen and (max-width: 767px) {
   .quote-parent {
