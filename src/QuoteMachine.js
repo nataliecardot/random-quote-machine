@@ -65,6 +65,6 @@ const QuoteMachine = (props) => (
       : null}
     </CardActions>
   </Card>
-)
+);
 
 export default withStyles(styles)(QuoteMachine);
