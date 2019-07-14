@@ -62,7 +62,6 @@ class App extends Component {
   render() {
     return (
       <Grid
-        id="quote-box"
         className={this.props.classes.container}
         justify="center"
         container
