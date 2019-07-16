@@ -39,7 +39,16 @@
 
 /* Extra large screens */
 @media screen and (min-width: 1900px) {
-  .quote-parent {
-    width: 70%;
+  .author {
+    margin-right: 10rem;
+  }
+
+  .quote {
+    font-size: 2.2rem;
+    text-align: justify;
+  }
+
+  .author {
+    font-size: 1.8rem;
   }
 }
