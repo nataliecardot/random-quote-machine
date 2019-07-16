@@ -36,3 +36,10 @@
     margin-right: 40px;
   }
 }
+
+/* Extra large screens */
+@media screen and (min-width: 1900px) {
+  .quote-parent {
+    width: 70%;
+  }
+}
