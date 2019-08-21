@@ -14,7 +14,6 @@ const styles = {
     height: '100vh',
     background: `url(${backgroundImage}) center`,
     backgroundSize: 'cover', // Using this in background causes issues
-    overflow: 'hidden',
   }
 };
 
